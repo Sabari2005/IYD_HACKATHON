@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <link rel="stylesheet" href="../static/css/index.css">
+        <script src="https://kit.fontawesome.com/c472cc2087.js" crossorigin="anonymous"></script>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+        </style>
+    </head>
+    <body>
+        <button class="openside-btn" id="openside-btn" style="display: none;">
+            <img src="../static/img/sidebar.png" style="height:100%;width:100%;object-fit: contain; ">                           
+        </button>
+        <div class="main" id="main">
+            <div class="side" id="side">
+                <div class="side-btn">
+                    <button id="closeside-btn">
+                        <img src="../static/img/cancel.png" style="transform: rotate(45deg);height:50%;width:50%;object-fit: contain;">                           
+                    </button>
+                </div>
+                
+                    <button class="new_chat" id="new_chat">
+                        <span>Begin New Chat</span>
+                        <div style="height: 15px;width:15px">
+                            <img src="../static/img/image.png" style="height:100%;width:100%;object-fit: contain;">                            
+                        </div>
+                    </button>
+                
+                <div class="search-recent">
+                    <span style="width:90%;text-align: left;margin-top: 15px; color: #ffffff; font-size: 14px;">Recent Chats</span>
+                    <div class="chat-titles-display" id="titles">
+                    </div>
+                </div>
+            </div>
+            <div class="main-content" id="main-content">
+                <div class="nav" id="nav">
+                    <div class="name">
+                        <span>Negotio</span>
+                    </div>
+                    <div class="tools">
+                        <div class="background-indicator"></div>
+                        <a href="#general" id="general-call" class="tool-name" data-target="general">
+                            <span>General</span>
+                        </a>
+                        <!-- <a href="#voice" id="voice-call" class="tool-name" data-target="voice">
+                            <span>Voice</span>
+                        </a> -->
+                        <a href="#about" id="about-call" class="tool-name" data-target="about">
+                            <span>About</span>
+                        </a>
+                        <a href="#contact_us" id="contact_us-call" class="tool-name" data-target="contact_us">
+                            <span>Contact us</span>
+                        </a>
+                    </div>
+                    
+                    <div class="home-btn">
+                       
+                    </div>
+                </div>
+                <div class="changer">
+                    <div class="general content-section" id="general" data-section="general" >
+                        <div class="chat-content-display" id="chat-content-display">
+                            <div class="msg-contain" id="msg-contain" style="background-color: trasnparent;">
+                            </div>
+                        </div>
+                        <div class="intro-template" id="intro-template">
+                            <span style="font-size: 35px;font-weight: 500;color: white;">How can we <span class="name" style="font-size: 35px;font-weight: 400;">assist </span> you?</span>
+                            <div style="font-size: 15px;color: #767676;width:500px;text-align: center;">
+                                <span>Get expert guidance powered by AI Negotio specializing in Yoga Bhagavad Gita, and Negotiation. Know your sologa that suits your needs and start your conversation with ease.</span>
+                            </div>
+                            <div class="card-holder">
+                                <div class="card-template" onclick="sendTemplateText('What is the central message of the Gita?')">
+                                    <div style="display: flex;justify-content: space-between;height:80px">
+                                        <span style="font-size: 16px;width:150px;color: #C2C2C2;font-weight: 500;">What is the central message of the Gita?</span>
+                                        <img src="../static/img/redirect.png">
+                                    </div>
+                                    <span style="font-size: 11px;color:#B1B1B1">Discover the Gita's core teachings on life</span>
+                                </div>
+                                <div class="card-template" onclick="sendTemplateText('What does Krishna say about duty and action?')">
+                                    <div style="display: flex;justify-content: space-between;height:80px">
+                                        <span style="font-size: 16px;width:150px;color: #C2C2C2;font-weight: 500;">What does Krishna say about duty and action?</span>
+                                        <img src="../static/img/redirect.png">
+                                    </div>
+                                    <span style="font-size: 11px;color:#B1B1B1">Explore Krishna's wisdom on purposeful living</span>
+                                </div>
+                                <div class="card-template" onclick="sendTemplateText('How do the Sutras guide us in mastering the mind?')">
+                                    <div style="display: flex;justify-content: space-between;height:80px">
+                                        <span style="font-size: 16px;width:150px;color: #C2C2C2;font-weight: 500;">How do the Sutras guide us in mastering the mind?</span>
+                                        <img src="../static/img/redirect.png">
+                                    </div>
+                                    <span style="font-size: 11px;color:#B1B1B1">Unlock mental clarity through Sutra teachings.</span>
+                                </div>
+                                <div class="card-template" onclick="sendTemplateText('How do the Sutras guide us in mastering the mind?')">
+                                    <div style="display: flex;justify-content: space-between;height:80px">
+                                        <span style="font-size: 16  px;width:150px;color: #C2C2C2;font-weight: 500;">How do the Sutras guide us in mastering the mind?</span>
+                                        <img src="../static/img/redirect.png">
+                                    </div>
+                                    <span style="font-size: 11px;color:#B1B1B1">Unlock mental clarity through Sutra teachings.</span>
+                                </div>
+                                                           
+                            </div>
+                        </div>
+                        <div class="total-input-box">
+                            <button>
+                                <img src="../static/img/file.png">
+                            </button>
+                            <input type="text" id="sendText">
+                            <button id="voice" style="background-color: transparent;">
+                                <img id="micIcon" src="../static/img/mic.png">
+                            </button>
+                            <button id="submit">
+                                <img src="../static/img/arrow.png">
+                            </button>
+                        </div>
+                    </div>
+                    <div class="voice content-section" id="voice" data-section="voice" >voice</div>
+                    <div class="about content-section" id="about" data-section="about" >
+                        <div class="about-template" style="background:linear-gradient(to left,transparent,rgb(33, 32, 32));">
+                            <div style="width:100px;height:100px;">
+                                <img src="../static/img/sabari.jpeg">
+                            </div>
+                            <div style="display: flex;justify-content: center;flex-direction: column;gap:10px;width:400px;height:90%">
+                                <span style="font-size: 40px;font-weight: 600; color: white;">Sabari Vadivelan S</span>
+                                <span style="font-size: 18px;font-weight: 500;color:gold">AI/ML Developer</span>
+                            </div>
+                        </div>
+                        <div class="about-template" style="background:linear-gradient(to right,transparent,rgb(33, 32, 32));">
+                            <div style="display: flex;justify-content: center;align-items:flex-end;flex-direction: column;gap:10px;width:400px;height:90%">
+                                <span style="font-size: 40px;font-weight: 600; color: white;">Uvarajan D</span>
+                                <span style="font-size: 18px;font-weight: 500;color:gold">Middleware Developer</span>
+                            </div>
+                            <div style="width:100px;height:100px;">
+                                <img src="../static/img/ulogo.jpg">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact_us content-section" id="contact_us" data-section="contact_us">
+                        <div class="about-template" style="background:linear-gradient(to left,transparent,rgb(33, 32, 32));">
+                            <div style="width:100px;height:100px;">
+                                <img src="../static/img/sabari.jpeg">
+                            </div>
+                            <div class="hover-effect" style="display: flex;justify-content: space-evenly;align-items: center;flex-direction: row;gap:10px;width:400px;height:90%">
+                                <a href="https://github.com/Sabari2005" target="_blank" >
+                                    <img src="../static/img/github-ico.png" style="height:40px;width:40px;object-fit: contain;">
+                                </a>
+                                <a href="https://www.linkedin.com/in/sabari-vadivelan-s" target="_blank">
+                                    <img src="../static/img/in.png" style="height:40px;width:40px;object-fit: contain;">
+                                </a>
+                                <a href="mailto:sabari132005@gmail.com" >
+                                    <img src="../static/img/mail.png" style="height:40px;width:40px;object-fit: contain;">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="about-template" style="background:linear-gradient(to right,transparent,rgb(33, 32, 32));">
+                            <div class="hover-effect" style="display: flex;justify-content: space-evenly;align-items: center;flex-direction: row;gap:10px;width:400px;height:90%">
+                                <a href="https://github.com/UVARAJAND" target="_blank" >
+                                    <img src="../static/img/github-ico.png" style="height:40px;width:40px;object-fit: contain;">
+                                </a>
+                                <a href="https://www.linkedin.com/in/uvarajan-dev" target="_blank">
+                                    <img src="../static/img/in.png" style="height:40px;width:40px;object-fit: contain;">
+                                </a>
+                                <a href="mailto:uvarajandev@gmail.com">
+                                    <img src="../static/img/mail.png" style="height:40px;width:40px;object-fit: contain;">
+                                </a>
+                            </div>
+                            <div style="width:100px;height:100px;">
+                                <img src="../static/img/ulogo.jpg">
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="../static/js/index.js"></script>
+</html>

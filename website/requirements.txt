@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+jinja2
+passlib
+pandas
+sentence-transformers
+pinecone
+groq
+

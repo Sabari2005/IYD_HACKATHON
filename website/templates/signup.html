@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <link rel="stylesheet" href="../static/css/signup.css">
+        <script src="https://kit.fontawesome.com/c472cc2087.js" crossorigin="anonymous"></script>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+        </style>
+    </head>
+    <body>
+        <div class="main">
+            <div class="right">
+                <img src="../static/img/poster.png">
+            </div>
+            <div class="left">
+                <div class="name">
+                    <span>Negotio</span>
+                </div>
+                <div class="btn-template">
+                    <img src="../static/img/google.png">
+                    <span>Continue with Google</span>
+                </div>
+                <div class="btn-template">
+                    <img src="../static/img/facebook.png">
+                    <span>Continue with Facebook</span>
+                </div>
+                <span style="margin-top: 20px;display: flex;justify-content: center;align-items: center;width:100%;font-size: 18px;color: white;">
+                    or
+                </span>
+                <form id="signupForm">
+                    <div class="input-template">
+                        <input type="email" id="email" placeholder="E-mail" required>
+                    </div>
+                    <div class="input-template">
+                        <input type="password" id="password" placeholder="Password" required>
+                    </div>
+                    <button type="submit" class="special-btn">Login</button>
+                </form>
+                
+                <div class="dont-have">
+                    <span>Already have an account? <a href="/" style="color: #428BCF;">Sign in</a></span>
+                </div>
+                
+            </div>
+            
+        </div>
+    </body>
+    <script src="../static/js/signup.js"></script>
+</html>

@@ -1,0 +1,203 @@
+*{
+    margin:0px;
+    padding: 0px;
+}
+@font-face {
+    font-family: 'MyFont'; /* The name you'll use in your CSS */
+    src: url('../fonts/NeueHaasDisplayBlack.ttf') format('truetype'); /* Preferred format */
+
+    font-weight: normal; /* Optional: specify font weight */
+    font-style: normal;  /* Optional: specify font style */
+}
+/* Keyframes for fade-in */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Keyframes for slide-in */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Apply fade-in animation to the main container */
+.main {
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Slide-in effect for the right image */
+.right img {
+    animation: slideIn 1s ease-out;
+}
+
+/* Button hover effect */
+.special-btn:hover {
+    transform: scale(1.05);
+    background-color: #DAA520;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    cursor: pointer;
+}
+
+/* Input focus effect */
+.input-template input:focus {
+    border: 1px solid #C79A29;
+    box-shadow: 0 0 5px #C79A29;
+    transition: box-shadow 0.2s ease, border 0.2s ease;
+}
+
+/* Smooth transitions for all elements */
+* {
+    transition: all 0.2s ease;
+}
+
+body{
+    font-family: "inter", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #090909;
+    width:100%;
+    height:100vh;
+}
+.main{
+    display: flex;
+    flex-direction: row;
+
+    height:600px;
+    width:950px;
+    border-radius: 20px;
+    /* background-color: #383838; */
+    /* background-color: #1E1E1E; */
+    background-color: rgba(30, 30, 30,0.54);
+    border:1px solid #383838;
+}
+.left{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:10px;
+    height: 100%;
+    width:55%;
+    /* background-color: yellow; */
+}
+.name{
+    margin-top: 30px;
+    margin-left: 30px;
+    width:75%;
+    font-family: 'MyFont', sans-serif;
+    color:white;
+    font-size: 30px;
+    font-weight: 700;
+    
+    background: linear-gradient(to right, #111111 0%, #886E2C 23%,#C39C3A 69%,#FFCB47 100%);
+    -webkit-background-clip: text; /* Clip the background to the text */
+    -webkit-text-fill-color: transparent; /* Make the text background visible */
+}
+.name span{
+    letter-spacing: 1px;
+}
+.btn-template{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /* justify-content: center; */
+    gap:20px;
+    margin-top: 20px;
+    height:50px ;
+    width:70%;
+    background-color: #161616;
+    border:1px solid #575757;
+    border-radius: 8px;
+}
+.btn-template img{
+    height:30px;
+    width:30px;
+    object-fit: contain;
+    margin-left: 50px;
+}
+.btn-template span{
+
+    font-size: 16px;
+    color: #7D7D7D;
+    font-weight: 500;
+}
+form{
+    width:75%;
+    /* background-color: green; */
+}
+.input-template{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+    height:50px;
+    /* background-color: green; */
+    /* border:1px solid #575757; */
+    border-radius: 8px;
+    margin-top: 20px;
+}
+.input-template input{
+    color:#7D7D7D;
+    font-size: 16px;
+    padding-left: 20px;
+    padding-right: 20px;
+    outline: none;
+    /* border: none; */
+    border:1px solid #575757;
+    width:89%;
+    height:100%;
+    border-radius: 8px;
+    background-color: #161616;
+}
+input::placeholder {
+    color: #B3B3B3;
+}
+
+.special-btn{
+    margin-top: 20px;
+    outline: none;
+    font-size: 16px;
+    font-weight: 500;
+    color: black;
+    height:50px;
+    width:100%;
+    background-color: #C79A29;
+    border:1px solid #575757;
+    border-radius: 8px;
+}
+.dont-have{
+    margin-top: 10px;
+    width:70%;
+    
+}
+.dont-have span{
+    font-size: 18px;
+    font-weight: 600;
+    color: #7D7D7D;
+}
+.right{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:100%;
+    width:45%;
+    /* background-color: red; */
+}
+.right img{
+    height:90%;
+    width:90%;
+    object-fit: contain;
+}
