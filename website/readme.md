@@ -6,15 +6,18 @@
   - `python3.11`
 
 ### Installation steps
-
+  - clone the github repository
   ```
-    https://github.com/Sabari2005/IYD_Hackathon.git
+    git clone https://github.com/Sabari2005/IYD_Hackathon.git
     cd IYD_Hackathon
     cd website
   ```
+  - Install the requirements 
   ```
     pip install -r requirements.txt
   ```
+  - Open the `IYD_model.py`
+  - Replace the **GROQ API KEY** in the line = `70, 159`
   - run the server
   ```
   python app.py

@@ -6,12 +6,14 @@
   - `python3.11`
 
 ### Installation steps
+  - Clone the github repository
 
   ```
-    https://github.com/Sabari2005/IYD_Hackathon.git
+    git clone https://github.com/Sabari2005/IYD_Hackathon.git
     cd IYD_Hackathon
     cd model
   ```
+  - Install the requirements
   ```
     pip install -r requirements.txt
   ```

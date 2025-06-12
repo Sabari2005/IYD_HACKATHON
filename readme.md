@@ -98,6 +98,99 @@ A structured prompt template is used to guide the LLM (**LLaMA3-70B**) via the *
 The model outputs a structured response:
 
 
+## Single Script Execution (Sabari_Vadivelan_s.py)
+- clone the github repository 
+```
+    git clone https://github.com/Sabari2005/IYD_Hackathon.git
+    cd IYD_Hackathon
+```
+- Open the Sabari_Vadivelan_s.py file
+- replace input csv file path and output csv file path
+```
+question_csv_file_path="YOUR CSV INPUT FILE PATH" #example : test.csv
+output_file_path="YOUR CSV OUTPUT FILE PATH" #examplt : result.csv
+```
+- Run the Sabari_vadivelan_S.py
+```
+    python Sabri_Vadivelan_S.py
+```
+- Automatically Creates all the necessary files
+```
+├─.env
+├─valmiki
+├─books.pdf
+│
+├───faiss_db1
+│       index.faiss
+│       index.pkl
+│
+└───ramayana_faiss_db
+        index.faiss
+        index.pkl
+```
+- results are stored in a specified location 
+
+## Full project Folder structure
+
+```
+│   readme.md
+│   Sabari_Vadivelan_S.py
+│
+├───assets
+│       archi.png
+│
+├───model
+│   │   .env
+│   │   books.pdf
+│   │   model.py
+│   │   readme.md
+│   │   requirements.txt
+│   │   result.csv
+│   │   Sabari_Vadivelan_S.py
+│   │   test.csv
+│   │   valmiki.csv
+│   │
+│   ├───faiss_db1
+│   │       index.faiss
+│   │       index.pkl
+│   │
+│   └───ramayana_faiss_db
+│           index.faiss
+│           index.pkl
+│
+└───website
+    │   app.py
+    │   books.pdf
+    │   chat.db
+    │   database.ipynb
+    │   IYD_model.py
+    │   readme.md
+    │   requirements.txt
+    │   valmiki.csv
+    │
+    ├───faiss_db1
+    │       index.faiss
+    │       index.pkl
+    │
+    ├───ramayana_faiss_db
+    │       index.faiss
+    │       index.pkl
+    │
+    ├───static
+    │   ├───css
+    │   ├───fonts
+    │   ├───img
+    │   └───js    │
+    ├───templates
+    │       index.html
+    │       login.html
+    │       signup.html
+    │
+    └───__pycache__
+            IYD_model.cpython-311.pyc
+            model.cpython-311.pyc
+
+```
 
 
 ## Author

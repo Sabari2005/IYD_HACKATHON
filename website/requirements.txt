@@ -6,4 +6,9 @@ pandas
 sentence-transformers
 pinecone
 groq
-
+langchain
+sentence-transformers
+faiss-cpu
+rank_bm25
+pypdf
+python-dotenv
