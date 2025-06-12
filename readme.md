@@ -100,31 +100,6 @@ The model outputs a structured response:
 
 
 
-## Installation
-
-### Prerequirements
-  - `python3.11`
-
-### Installation steps
-  - open the `.env` file 
-  - replace with your **groq api key** ( give seperate `api key` )
-  ```
-    GROQ_API_KEY="YOUR API KEY"
-    GROQ_API_KEY2="YOUR API KEY"
-    GROQ_API_KEY3="YOUR API KEY"
-  ```
-  ```
-    pip install -r requirements.txt
-  ```
-  
-  ```
-  python app.py
-  ```
-  - Open ` http://127.0.0.1:8000` in your browser
-  
-
-
-
 ## Author
 
 - Sabari Vadivelan S (Team Leader) - Contact Gmail [sabari132005@gmail.com]()
