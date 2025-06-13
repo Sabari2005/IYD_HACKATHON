@@ -170,64 +170,41 @@ async function checkLastChatHasContent(chat_id) {
 //     return formattedText;
 // }
 /**
- * @param {string} text 
+ * @param {object|string} text 
  * @returns {string}
  */
 function formatTextWithGaps(text) {
-    console.log("got formatting text:"+ text);
-    const nonEnglishRegex = /[^\u0000-\u007F]/;
-    const boldRegex = /\*\*(.+?)\*\*/g;
+    console.log("got formatting text:", text);
 
-    // Helper to extract tag content
-    function extractTag(tag, str) {
-        const regex = new RegExp(`<${tag}>([\\s\\S]*?)<\\/${tag}>`);
-        const match = str.match(regex);
-        return match ? match[1].trim() : null;
-    }
+    let label = "", kanda = "", verse = "", evidence = "", explanation = "";
 
-    // Extract values from tags
-    const label = extractTag("Label", text);
-    const kanda = extractTag("Kanda", text);
-    const verse = extractTag("Verse", text);
-    const evidence = extractTag("Evidence", text);
-    const explanation = extractTag("Explanation", text);
+    try {
+        const jsonData = (typeof text === "string") ? JSON.parse(text) : text;
 
-    let formattedText = "";
-
-    // Label
-    if (label) {
-        formattedText += `<div id="Label"><b>Label:</b> ${label}</div><br>`;
-    }
-
-    // Sanskrit block (from Evidence)
-    if (evidence) {
-        const isNonEnglish = nonEnglishRegex.test(evidence);
-        if (isNonEnglish) {
-            formattedText += `<div id="sanskrit">${evidence}</div><br>`;
-        } else {
-            formattedText += `<div id="sanskrit"><span>${evidence}</span></div><br>`;
+        // Defensive check if it is really a valid object
+        if (jsonData && typeof jsonData === "object") {
+            label = jsonData.Label || "";
+            kanda = jsonData.Kanda || "";
+            verse = jsonData.Verse || "";
+            evidence = jsonData.Evidence || "";
+            explanation = jsonData.Explanation || "";
         }
+    } catch (e) {
+        console.error("Error parsing answer text:", e);
+        return `<div class="error">Error displaying result.</div>`;
     }
 
-    // Kanda
-    if (kanda) {
-        formattedText += `<div id="kanda"><b>Kanda:</b> ${kanda}</div><br>`;
-    }
-
-    // Verse
-    if (verse) {
-        formattedText += `<div id="verse"><b>Verse:</b> ${verse}</div><br>`;
-    }
-
-    // Explanation
-    if (explanation) {
-        formattedText += `<div id="explanation"><b>Explanation:</b> ${explanation}</div><br>`;
-    }
-
-    return formattedText;
+    return `
+        <div class="label"><strong>Label:</strong> ${label}</div>
+        ${kanda ? `<div class="kanda"><strong>Kanda:</strong> ${kanda}</div>` : ""}
+        ${verse ? `<div class="verse"><strong>Verse:</strong> ${verse}</div>` : ""}
+        <div id="sanskrit"><strong>Evidence:</strong> ${evidence}</div>
+        <div id="sanskrit"><strong>Explanation:</strong> ${explanation}</div>
+    `;
 }
 
 function displayMessages(messages) {
+    console.log("entering display messages");
     console.log(messages);
     msgContain.innerHTML = "";
     messages.forEach((message) => {
@@ -251,10 +228,13 @@ function displayMessages(messages) {
         const receiveInnerDiv = document.createElement("div");
         receiveInnerDiv.classList.add("receive_div");
 
-        // const receiveSpan = document.createElement("span");
+        const receiveSpan = document.createElement("span");
+        console.log("entering before format", message.answer);
         receiveSpan.innerHTML = formatTextWithGaps(message.answer);
+        console.log("entering display message");
+        // receiveSpan.innerHTML = message.answer;
 
-        // receiveInnerDiv.appendChild(receiveSpan);
+        receiveInnerDiv.appendChild(receiveSpan);
         receiveDiv.appendChild(receiveImg);
         receiveDiv.appendChild(receiveInnerDiv);
         msgContain.appendChild(sendDiv);
@@ -361,6 +341,7 @@ titles.scrollTo({
 
 
 async function getChatMessages(chat_id) {
+    console.log("entered get chat msgs");
     const titleTemplateButtons = document.querySelectorAll('.title-template');
     let dotsBtn=document.querySelectorAll(".delete-btn");
     introTemplate.style.display="none";
@@ -385,6 +366,7 @@ async function getChatMessages(chat_id) {
         });
 
         const data = await response.json();
+        console.log(data);
         if (response.ok) {
             console.log("Messages for chat:", chat_id);
             displayMessages(data.messages);
@@ -399,17 +381,20 @@ async function getChatMessages(chat_id) {
               textField.disabled=false;
               
         } else {
-            console.error("Error retrieving messages:", data.detail);
-            alert("cannot communicate with server . the website will be reloaded shortly to resolve this error or (restart the server)")
-            location.reload();
+            console.log("Error:", error);
+            console.log("Error retrieving messages:", data.detail);
+            // alert("cannot communicate with server . the website will be reloaded shortly to resolve this error or (restart the server)")
+            // location.reload();
         }
     } catch (error) {
         console.error("Error:", error);
         
-        alert("cannot communicate with server . the website will be reloaded shortly to resolve this error or (restart the server)")
-        location.reload();
+        // alert("cannot communicate with server . the website will be reloaded shortly to resolve this error or (restart the server)")
+        // location.reload();
     }
 }
+
+
 async function createNewChat() {
     console.log("Creating a new chat...");
     resetui();

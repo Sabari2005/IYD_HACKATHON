@@ -1,5 +1,15 @@
 ## "IYD HACKATHON - WEB UI"
 
+## USER INTERFACE
+
+### Intro Page
+
+![Intro page](/assets/front_banner.png)
+
+### Main Page
+
+![Intro page](/assets/main_banner.png)
+
 ## Installation
 
 ### Prerequirements

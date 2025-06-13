@@ -12,6 +12,8 @@ import time
 from IYD_model import fact_check_invoke
 from typing import Dict
 import sqlite3
+import re
+import json
 app = FastAPI()
 # Static files and templates
 app.mount("/static", StaticFiles(directory="static"), name="static")
@@ -210,16 +212,27 @@ async def add_message(chat_id: int, message: Dict[str, str]):
     # answer =message.get("question")
     # answer=main_total(question,feedback)
     answer = fact_check_invoke(question)
-    print(answer)
-    # print(answer)
+#     answer="""Here is the combined output in the specified format:
+
+# --------------------------
+# <Label>None</Label>
+# <Evidence>"Then she who is a hymnodist that Tara has performed a hymnal bon voyage wishing triumph to Vali, and entered palace chambers along with other females, disoriented by her own sadness."</Evidence>
+# <Explanation>The context does not mention "Ravenna" at all, therefore there is no information to determine if the statement is true or false.</Explanation>
+# --------------------------
+
+# Note: Since the result is "None", the Kanda and Verse fields are not included."""
+# #     print(answer)
+    data = dict(re.findall(r"<(\w+)>(.*?)</\1>", answer.strip()))
+    answer_json = json.dumps(data)
+    # print(data)
+    # print(json.dumps)
 
     if not question or not answer:
         conn.close()
         raise HTTPException(status_code=400, detail="Both 'question' and 'answer' are required")
-    # if answer!="This Question not directly related to Bhagavad Gita or Pantanjali yoga sutra":
     cursor.execute(
         "INSERT INTO messages (chat_id, question, answer) VALUES (?, ?, ?)",
-        (chat_id, question, answer),
+        (chat_id, question, answer_json),
     )
     conn.commit()
     conn.close()
@@ -263,7 +276,17 @@ async def get_chat_messages(chat_id: int):
     ).fetchall()
     conn.close()
     settingChatid(chat_id)
-    return {"messages": [dict(message) for message in messages]}
+    print({"messages": [dict(message) for message in messages]})
+    # return {"messages": [dict(message) for message in messages]}
+    return {
+        "messages": [
+            {
+                "question": message["question"],
+                "answer": json.loads(message["answer"])  # convert string back to dict
+            }
+            for message in messages
+        ]
+    }
 
 @app.delete("/delete_chat/{chat_id}/")
 async def delete_chat(chat_id: int):
